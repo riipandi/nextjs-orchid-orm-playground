@@ -1,7 +1,7 @@
-import { rakeDb } from 'rake-db'
-import { config } from './config'
-import { appCodeUpdater } from 'orchid-orm'
 import { join } from 'path'
+import { rakeDb } from 'rake-db'
+import { appCodeUpdater } from 'orchid-orm'
+import { config } from './config'
 
 rakeDb(config.database, {
     migrationsPath: join(__dirname, 'migrations'),
@@ -9,7 +9,7 @@ rakeDb(config.database, {
         tablePath: (tableName) => join(__dirname, `tables/${tableName}.table.ts`),
         baseTablePath: join(__dirname, 'baseTable.ts'),
         baseTableName: 'BaseTable',
-        mainFilePath: join(__dirname, 'db.ts'),
+        mainFilePath: join(__dirname, 'index.ts'),
     }),
     useCodeUpdater: true, // set to false to disable code updater
     commands: {
