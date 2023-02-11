@@ -6,7 +6,7 @@ export type Account = AccountTable['columns']['type']
 export class AccountTable extends BaseTable {
     table = 'account'
     columns = this.setColumns((t) => ({
-        id: t.uuid().primaryKey(),
+        id: t.uuid().primaryKey().default('gen_random_uuid()'),
         userId: t.uuid().foreignKey('user', 'id').index(),
         type: t.text(),
         provider: t.text(),

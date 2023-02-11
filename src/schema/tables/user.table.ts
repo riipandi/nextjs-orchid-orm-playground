@@ -8,7 +8,7 @@ export type User = UserTable['columns']['type']
 export class UserTable extends BaseTable {
     table = 'user'
     columns = this.setColumns((t) => ({
-        id: t.uuid().primaryKey(),
+        id: t.uuid().primaryKey().default('gen_random_uuid()'),
         email: t.text().unique(),
         name: t.text(),
         emailVerified: t.timestamp().nullable(),
