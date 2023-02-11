@@ -1,18 +1,15 @@
+import { hash } from '@node-rs/bcrypt'
 import { db } from '..'
 
 export const seed = async () => {
-    await db.post.findBy({ title: 'Sample post' }).orCreate({
-        title: 'Post',
-        text: 'This is a text for a sample post. It contains words, spaces, and punctuation.',
-        comments: {
-            create: [
-                {
-                    text: 'Nice post!',
-                },
-                {
-                    text: `Too long, didn't read`,
-                },
-            ],
+    await db.user.findBy({ email: 'admin@example.com' }).orCreate({
+        id: '04b0990b-dae9-4a18-ae8e-1b1937a1b6f0',
+        name: 'Admin Sistem',
+        email: 'admin@example.com',
+        password: {
+            create: {
+                hash: await hash('secret'),
+            },
         },
     })
 

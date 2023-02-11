@@ -38,7 +38,11 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 ## Generate Database Migration
 
 ```sh
-pnpm db g create_user
+pnpm db g createUser
+pnpm db g createPassword
+pnpm db g createAccount
+pnpm db g createSession
+pnpm db g createVerificationToken
 ```
 
 ## Run Database Migration

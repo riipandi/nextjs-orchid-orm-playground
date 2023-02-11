@@ -9,7 +9,7 @@ rakeDb(config.database, {
         tablePath: (tableName) => join(__dirname, `tables/${tableName}.table.ts`),
         baseTablePath: join(__dirname, 'baseTable.ts'),
         baseTableName: 'BaseTable',
-        mainFilePath: join(__dirname, 'index.ts'),
+        mainFilePath: join(__dirname, 'database.ts'),
     }),
     useCodeUpdater: true, // set to false to disable code updater
     commands: {
