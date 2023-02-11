@@ -12,6 +12,7 @@ specifiers:
   '@types/react-dom': 18.0.10
   autoprefixer: ^10.4.13
   clsx: ^1.2.1
+  dotenv: ^16.0.3
   eslint: 8.34.0
   eslint-config-next: 13.1.6
   eslint-plugin-tailwindcss: ^3.8.3
@@ -34,6 +35,7 @@ specifiers:
 dependencies:
   '@next/font': 13.1.6
   clsx: 1.2.1
+  dotenv: 16.0.3
   next: 13.1.6_biqbaboplfbrettd7655fr4n2y
   orchid-orm: 1.5.27_typescript@4.9.5
   orchid-orm-schema-to-zod: 0.2.21
@@ -982,6 +984,11 @@ packages:
     dependencies:
       esutils: 2.0.3
     dev: true
+
+  /dotenv/16.0.3:
+    resolution: {integrity: sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==}
+    engines: {node: '>=12'}
+    dev: false
 
   /drange/1.1.1:
     resolution: {integrity: sha512-pYxfDYpued//QpnLIm4Avk7rsNtAtQkUES2cwAYSvD/wd2pKD71gN2Ebj3e7klzXwjocvE8c5vx/1fxwpqmSxA==}
