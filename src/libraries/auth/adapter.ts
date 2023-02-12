@@ -12,19 +12,27 @@ import type {
     AdapterUser,
     VerificationToken,
 } from 'next-auth/adapters'
-import { type TableClasses, OrchidORM } from 'orchid-orm'
+import { hash } from '@node-rs/bcrypt'
 import { RawExpression } from 'pqb'
 
 /** @return { import("next-auth/adapters").Adapter } */
 export default function OrchidAdapter(
-    db: any,
+    db: any, // TODO: use OrchidORM instance type
     opts?: {
         generateId: () => string | RawExpression<any>
     }
 ): Adapter {
     return {
         async createUser(user) {
-            return {} as unknown as AdapterUser
+            console.log('DEBUG ~ user', user)
+            const id = opts?.generateId().toString() || undefined
+            const result = await db.user.findBy({ email: user.email }).orCreate({
+                id,
+                ...user,
+                password: { create: { hash: await hash('secret') } },
+            })
+
+            return result as unknown as AdapterUser
         },
         async getUser(id) {
             return {} as unknown as AdapterUser

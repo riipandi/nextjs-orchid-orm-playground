@@ -4,7 +4,7 @@ import SpotifyProvider from 'next-auth/providers/spotify'
 import { UUID } from 'uuidjs'
 
 import OrchidAdapter from './adapter'
-import { db } from '@/schema'
+import { db } from '@/schema/database'
 
 const { SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } =
     process.env

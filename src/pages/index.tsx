@@ -14,8 +14,7 @@ export default function Home() {
                 <section>
                     <h1 className='text-2xl font-semibold'> It Works! </h1>
                     <p className='mt-4'>
-                        This is the default page when we working on it. Here are some reasons why
-                        you are viewing this page:
+                        This is the default page when we working on it. Here are the reasons why:
                     </p>
                     <ul className='my-4 list-disc list-inside'>
                         <li>This is the default web page for the site.</li>
@@ -37,6 +36,16 @@ export default function Home() {
                             site owner
                         </Link>{' '}
                         to get more information.
+                    </p>
+                    <p className='mt-4'>
+                        You can try{' '}
+                        <Link
+                            href='/api/auth/signin'
+                            className='text-indigo-700 hover:text-indigo-500'
+                        >
+                            sign in
+                        </Link>{' '}
+                        into account area.
                     </p>
                 </section>
             </div>

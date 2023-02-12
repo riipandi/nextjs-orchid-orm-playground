@@ -1,5 +1,5 @@
 import { hash } from '@node-rs/bcrypt'
-import { db } from '..'
+import { db } from '../database'
 
 export const seed = async () => {
     await db.user.findBy({ email: 'admin@example.com' }).orCreate({
