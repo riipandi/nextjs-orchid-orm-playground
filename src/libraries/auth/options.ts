@@ -1,12 +1,14 @@
 import type { NextAuthOptions } from 'next-auth'
 import Email from 'next-auth/providers/email'
 import GoogleProvider from 'next-auth/providers/google'
+import SpotifyProvider from 'next-auth/providers/spotify'
 import { UUID } from 'uuidjs'
 
 import OrchidAdapter from '@/libraries/auth/adapter'
 import { db } from '@/schema/database'
 
-const { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } = process.env
+const { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET, SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET } =
+  process.env
 const { SMTP_PORT, SMTP_HOST, SMTP_USERNAME, SMTP_PASSWORD, SMTP_MAIL_FROM } = process.env
 
 /**
@@ -31,6 +33,11 @@ export const authOptions: NextAuthOptions = {
     GoogleProvider({
       clientId: GOOGLE_CLIENT_ID || '',
       clientSecret: GOOGLE_CLIENT_SECRET || '',
+      allowDangerousEmailAccountLinking: true,
+    }),
+    SpotifyProvider({
+      clientId: SPOTIFY_CLIENT_ID || '',
+      clientSecret: SPOTIFY_CLIENT_SECRET || '',
       allowDangerousEmailAccountLinking: true,
     }),
   ],
