@@ -13,6 +13,7 @@ export class UserTable extends BaseTable {
     email: t.text().unique(),
     name: t.text().nullable(),
     image: t.text().nullable(),
+    role: t.enum('UserRole', ['admin', 'user']).default('user'),
     emailVerified: t.timestamp().nullable(),
     ...t.timestamps(),
   }))
