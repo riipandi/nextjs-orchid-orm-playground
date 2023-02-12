@@ -1,10 +1,9 @@
+import { tableToZod } from 'orchid-orm-schema-to-zod'
 import { BaseTable } from '../baseTable'
 
 import { AccountTable } from './account.table'
 import { PasswordTable } from './password.table'
 import { SessionTable } from './session.table'
-
-export type User = UserTable['columns']['type']
 
 export class UserTable extends BaseTable {
   table = 'user'
@@ -32,3 +31,7 @@ export class UserTable extends BaseTable {
     }),
   }
 }
+
+export type User = UserTable['columns']['type']
+
+export const schema = tableToZod(UserTable)

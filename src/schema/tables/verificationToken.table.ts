@@ -1,6 +1,6 @@
-import { BaseTable } from '../baseTable'
+import { tableToZod } from 'orchid-orm-schema-to-zod'
 
-export type VerificationToken = VerificationTokenTable['columns']['type']
+import { BaseTable } from '../baseTable'
 
 export class VerificationTokenTable extends BaseTable {
   table = 'verificationToken'
@@ -13,3 +13,7 @@ export class VerificationTokenTable extends BaseTable {
     ...t.primaryKey(['identifier', 'token']),
   }))
 }
+
+export type VerificationToken = VerificationTokenTable['columns']['type']
+
+export const schema = tableToZod(VerificationTokenTable)

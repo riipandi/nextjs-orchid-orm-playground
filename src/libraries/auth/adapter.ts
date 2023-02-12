@@ -16,14 +16,12 @@ import type {
 } from 'next-auth/adapters'
 import { RawExpression } from 'pqb'
 
-import { db } from '@/schema/database'
-
 /** @return { import("next-auth/adapters").Adapter } */
 
 type SessionAndUserProps = { session: AdapterSession; user: AdapterUser }
 
 export default function OrchidAdapter(
-  // db: any, // TODO: use OrchidORM instance type
+  db: any, // TODO: use OrchidORM instance type
   opts?: { generateId: () => string | RawExpression<any> }
 ): Adapter {
   return {
