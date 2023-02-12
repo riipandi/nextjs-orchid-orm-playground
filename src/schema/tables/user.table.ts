@@ -10,7 +10,8 @@ export class UserTable extends BaseTable {
     columns = this.setColumns((t) => ({
         id: t.uuid().primaryKey().default('gen_random_uuid()'),
         email: t.text().unique(),
-        name: t.text(),
+        name: t.text().nullable(),
+        image: t.text().nullable(),
         emailVerified: t.timestamp().nullable(),
         ...t.timestamps(),
     }))

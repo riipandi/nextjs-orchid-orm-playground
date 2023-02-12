@@ -1,13 +1,11 @@
 import type { NextAuthOptions } from 'next-auth'
 import GoogleProvider from 'next-auth/providers/google'
-import SpotifyProvider from 'next-auth/providers/spotify'
+// import Email from 'next-auth/providers/email'
 import { UUID } from 'uuidjs'
 
-import OrchidAdapter from './adapter'
-import { db } from '@/schema/database'
+import OrchidAdapter from '@/libraries/auth/adapter'
 
-const { SPOTIFY_CLIENT_ID, SPOTIFY_CLIENT_SECRET, GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } =
-    process.env
+const { GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET } = process.env
 
 export const authOptions: NextAuthOptions = {
     // Include user.id on session
@@ -19,16 +17,26 @@ export const authOptions: NextAuthOptions = {
     //         return session
     //     },
     // },
-    // Configure one or more authentication providers
-    adapter: OrchidAdapter(db, {
+    adapter: OrchidAdapter({
         generateId: () => UUID.genV6().hexString,
     }),
+    // Configure one or more authentication providers
     providers: [
-        SpotifyProvider({
-            clientId: SPOTIFY_CLIENT_ID || '',
-            clientSecret: SPOTIFY_CLIENT_SECRET || '',
-            allowDangerousEmailAccountLinking: true,
-        }),
+        // Email({
+        //     server: {
+        //         port: 465,
+        //         host: 'smtp.gmail.com',
+        //         secure: true,
+        //         auth: {
+        //             user: process.env.EMAIL_USERNAME,
+        //             pass: process.env.EMAIL_PASSWORD,
+        //         },
+        //         tls: {
+        //             rejectUnauthorized: false,
+        //         },
+        //     },
+        //     from: process.env.EMAIL_FROM,
+        // }),
         GoogleProvider({
             clientId: GOOGLE_CLIENT_ID || '',
             clientSecret: GOOGLE_CLIENT_SECRET || '',

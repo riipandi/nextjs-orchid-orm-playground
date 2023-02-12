@@ -13,6 +13,7 @@
         "@next/font": "13.1.6",
         "@node-rs/bcrypt": "^1.6.2",
         "clsx": "^1.2.1",
+        "cookie-universal": "^2.2.2",
         "dotenv": "^16.0.3",
         "next": "13.1.6",
         "next-auth": "^4.19.2",

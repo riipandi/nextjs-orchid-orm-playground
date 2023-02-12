@@ -5,7 +5,7 @@ import { NotFoundError, QueryError } from 'pqb'
 import { db } from '@/schema/database'
 import { User } from '@/schema/tables/user.table'
 
-async function fetchuserById(req: NextApiRequest, res: NextApiResponse<User | ErrorResponse>) {
+async function fetchUserById(req: NextApiRequest, res: NextApiResponse<User | ErrorResponse>) {
     const { userId } = req.query as { userId: string }
     try {
         res.status(200).json(await db.user.findBy({ id: userId }))
@@ -49,7 +49,7 @@ async function deleteUser(req: NextApiRequest, res: NextApiResponse<User | Error
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
     switch (req.method) {
         case 'GET':
-            return fetchuserById(req, res)
+            return fetchUserById(req, res)
         case 'PUT':
             return updateUser(req, res)
         case 'DELETE':

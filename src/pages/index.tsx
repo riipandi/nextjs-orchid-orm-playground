@@ -1,7 +1,10 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import { signOut, useSession } from 'next-auth/react'
 
 export default function Home() {
+    const { data: sessionData } = useSession()
+
     return (
         <main className='flex h-screen items-center bg-gradient-to-tr from-black to-sky-800'>
             <Head>
@@ -37,16 +40,29 @@ export default function Home() {
                         </Link>{' '}
                         to get more information.
                     </p>
-                    <p className='mt-4'>
-                        You can try{' '}
-                        <Link
-                            href='/api/auth/signin'
-                            className='text-indigo-700 hover:text-indigo-500'
-                        >
-                            sign in
-                        </Link>{' '}
-                        into account area.
-                    </p>
+                    {sessionData ? (
+                        <p className='mt-4'>
+                            {`Logged in as ${sessionData.user?.name} (${sessionData.user?.email}) `}
+                            <button
+                                type='button'
+                                className='text-indigo-700 hover:text-indigo-500'
+                                onClick={() => signOut()}
+                            >
+                                sign out &rarr;
+                            </button>
+                        </p>
+                    ) : (
+                        <p className='mt-4'>
+                            You can try{' '}
+                            <Link
+                                href='/api/auth/signin'
+                                className='text-indigo-700 hover:text-indigo-500'
+                            >
+                                sign in
+                            </Link>{' '}
+                            into account area.
+                        </p>
+                    )}
                 </section>
             </div>
         </main>

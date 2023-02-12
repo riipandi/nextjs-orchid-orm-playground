@@ -8,8 +8,8 @@ export class SessionTable extends BaseTable {
     columns = this.setColumns((t) => ({
         id: t.uuid().primaryKey().default('gen_random_uuid()'),
         userId: t.uuid().foreignKey('user', 'id').index(),
-        expires: t.timestamp().nullable(),
-        sessiontoken: t.text().nullable(),
+        sessionToken: t.text().unique(),
+        expires: t.timestamp(),
         ...t.timestamps(),
     }))
 
