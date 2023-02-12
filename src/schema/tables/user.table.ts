@@ -1,4 +1,5 @@
 import { tableToZod } from 'orchid-orm-schema-to-zod'
+
 import { BaseTable } from '../baseTable'
 
 import { AccountTable } from './account.table'

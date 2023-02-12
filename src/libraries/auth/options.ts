@@ -21,23 +21,23 @@ export const authOptions: NextAuthOptions = {
     Email({
       server: {
         port: Number(SMTP_PORT),
-        host: SMTP_HOST,
+        host: String(SMTP_HOST),
         auth: {
-          user: SMTP_USERNAME,
-          pass: SMTP_PASSWORD,
+          user: String(SMTP_USERNAME),
+          pass: String(SMTP_PASSWORD),
         },
         secure: false,
       },
-      from: SMTP_MAIL_FROM,
+      from: String(SMTP_MAIL_FROM),
     }),
     GoogleProvider({
-      clientId: GOOGLE_CLIENT_ID || '',
-      clientSecret: GOOGLE_CLIENT_SECRET || '',
+      clientId: String(GOOGLE_CLIENT_ID),
+      clientSecret: String(GOOGLE_CLIENT_SECRET),
       allowDangerousEmailAccountLinking: true,
     }),
     SpotifyProvider({
-      clientId: SPOTIFY_CLIENT_ID || '',
-      clientSecret: SPOTIFY_CLIENT_SECRET || '',
+      clientId: String(SPOTIFY_CLIENT_ID),
+      clientSecret: String(SPOTIFY_CLIENT_SECRET),
       allowDangerousEmailAccountLinking: true,
     }),
   ],

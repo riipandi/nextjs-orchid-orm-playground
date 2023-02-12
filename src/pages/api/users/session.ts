@@ -1,6 +1,6 @@
-import { default as CookieUniversal } from 'cookie-universal'
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { AdapterSession, AdapterUser } from 'next-auth/adapters'
+import { default as CookieUniversal } from 'cookie-universal'
 
 import { db } from '@/schema/database'
 import { ErrorResponse, isAuthenticated, throwError } from '@/utils/response'

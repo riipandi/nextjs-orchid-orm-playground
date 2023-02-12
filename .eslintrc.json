@@ -8,13 +8,7 @@
     "plugin:tailwindcss/recommended",
     "prettier"
   ],
-  "ignorePatterns": [
-    ".next",
-    ".cache",
-    "build",
-    "dist",
-    "out"
-  ],
+  "ignorePatterns": [".next", ".cache", "build", "dist", "out"],
   "parser": "@typescript-eslint/parser",
   "settings": {
     "tailwindcss": {
@@ -61,7 +55,7 @@
           {
             "groups": [
               // Packages `react` related packages come first.
-              ["^react", "^next(/.*|$)","^@?\\w"],
+              ["^react", "^next(?!/?$)", "^@?\\w"],
               // Internal packages.
               ["^(@|components)(/.*|$)"],
               // Side effect imports.

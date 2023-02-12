@@ -6,7 +6,6 @@
  * - https://next-auth.js.org/adapters/models
  */
 
-import { hash } from '@node-rs/bcrypt'
 import type {
   Adapter,
   AdapterAccount,
@@ -14,6 +13,7 @@ import type {
   AdapterUser,
   VerificationToken,
 } from 'next-auth/adapters'
+import { hash } from '@node-rs/bcrypt'
 import { RawExpression } from 'pqb'
 
 /** @return { import("next-auth/adapters").Adapter } */

@@ -1,6 +1,7 @@
 import { tableToZod } from 'orchid-orm-schema-to-zod'
 
 import { BaseTable } from '../baseTable'
+
 import { UserTable } from './user.table'
 
 export class AccountTable extends BaseTable {
