@@ -20,7 +20,7 @@ kill_timeout = 120
 
 # [[mounts]]
 #   destination = "/data"
-#   source = "bcrdata_prod"
+#   source = "nextjs_data"
 
 [[services]]
   internal_port = 3000
