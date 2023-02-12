@@ -23,9 +23,7 @@ type SessionAndUserProps = { session: AdapterSession; user: AdapterUser }
 
 export default function OrchidAdapter(
     // db: any, // TODO: use OrchidORM instance type
-    opts?: {
-        generateId: () => string | RawExpression<any>
-    }
+    opts?: { generateId: () => string | RawExpression<any> }
 ): Adapter {
     return {
         async createUser(user) {
@@ -56,8 +54,9 @@ export default function OrchidAdapter(
         },
         async getUserByAccount({ providerAccountId, provider }) {
             try {
-                const result = await db.account.findBy({ providerAccountId, provider })
-                return result as unknown as AdapterUser
+                const { userId } = await db.account.findBy({ providerAccountId, provider })
+                const user = await db.user.findBy({ id: userId })
+                return user as unknown as AdapterUser
             } catch (err) {
                 return null as unknown as AdapterUser
             }
